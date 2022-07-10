@@ -1,15 +1,42 @@
-<template>
-  <div class="home">
-    <div @click="move3">프로젝트 목록 보러 가기</div>
+<template >
+  <div>
+
+<v-input  v-model="email"   >
+
+
+</v-input>
+
+<v-input    v-model="password"    >
+
+
+</v-input>
+
+
+
+
+
+
+
   </div>
 </template>
-
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";
 
 export default {
   data() {
-    return {};
+    return {
+
+        email: null,
+
+
+        password: null
+
+
+
+
+
+
+    };
   },
 
   methods: {
@@ -33,8 +60,26 @@ export default {
 
     ...mapMutations(["submitlogout"]),
 
-    move3() {
-      this.$router.push({ name: "projectlist" });
+    async onSubmit() {
+      try {
+        await axios.post("http://localhost:5200/signup/account", {
+          email: this.email,
+          password: this.password,
+          name: Date.now(),
+          //   firaddress: this.form.firaddress,
+          //   secaddress: this.form.secaddress,
+          //   thraddress: this.form.thraddress,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+
+      //   this.form.email = "";
+      //   this.form.password = "";
+      //   this.form.name = "";
+      //   this.form.passwordConfirm = "";
+
+      //   this.$router.push({ name: "login" });
     },
   },
   computed: {
@@ -47,9 +92,7 @@ export default {
     ...mapState(["soldinfo"]),
     ...mapState(["vrcp"]),
   },
-
-  components: {
-    // HelloWorld
-  },
 };
 </script>
+<style >
+</style>

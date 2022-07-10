@@ -1,9 +1,6 @@
 <template>
-  <div class="home">
-    <div @click="move3">프로젝트 목록 보러 가기</div>
-  </div>
+  <div></div>
 </template>
-
 <script>
 import { mapState, mapActions, mapMutations } from "vuex";
 
@@ -32,10 +29,6 @@ export default {
     ...mapMutations(["buyprocess"]),
 
     ...mapMutations(["submitlogout"]),
-
-    move3() {
-      this.$router.push({ name: "projectlist" });
-    },
   },
   computed: {
     ...mapState(["islogin"]),
@@ -47,9 +40,7 @@ export default {
     ...mapState(["soldinfo"]),
     ...mapState(["vrcp"]),
   },
-
-  components: {
-    // HelloWorld
-  },
 };
 </script>
+<style >
+</style>
