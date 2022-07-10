@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { mapState, mapActions, mapMutations } from "vuex";
 
 export default {
@@ -15,7 +16,7 @@ export default {
   methods: {
     ...mapActions(["login"]),
     ...mapMutations(["loginsuccess"]),
-    ...mapMutations(["addNFT2"]),
+    ...mapMutations(["addproject"]),
     ...mapMutations(["sendNFT"]),
     ...mapMutations(["sendNFTtitle"]),
     ...mapMutations(["sendNFTcontent"]),
@@ -40,7 +41,7 @@ export default {
   computed: {
     ...mapState(["islogin"]),
 
-    ...mapState(["newtradingNFTs"]),
+    ...mapState(["project0"]),
 
     ...mapState(["tradeditem"]),
     ...mapState(["boughtinfo"]),

@@ -1,48 +1,52 @@
 <template >
   <div>
+    프로젝트 이름
+    <input v-model="email" />
 
-<v-input  v-model="email"   >
+    프로젝트 종류
+    <input v-model="password" />
+
+    <v-btn @click="onSubmit"> 프로젝트 추가 </v-btn>
+
+    <v-btn @click="whileread"> 프로젝트 목록 보기 </v-btn>
+
+    <div v-for="item in userlist" :key="item._id">
+      <div @click="selectinfo(item._id)">
+        {{ item }}
+      </div>
+    </div>
+
+ <div v-for="item in $store.state.project0" :key="item._id">
+      <div >
+        {{ item }}
+      </div>
+    </div>
 
 
-</v-input>
-
-<v-input    v-model="password"    >
-
-
-</v-input>
 
 
 
-
-
-
-
+    <div @click="move3">프로젝트 상세 보러 가기</div>
   </div>
 </template>
 <script>
+import axios from "axios";
 import { mapState, mapActions, mapMutations } from "vuex";
 
 export default {
   data() {
     return {
+      email: null,
+      password: null,
 
-        email: null,
-
-
-        password: null
-
-
-
-
-
-
+      userlist: [],
     };
   },
 
   methods: {
     ...mapActions(["login"]),
     ...mapMutations(["loginsuccess"]),
-    ...mapMutations(["addNFT2"]),
+    ...mapMutations(["addproject"]),
     ...mapMutations(["sendNFT"]),
     ...mapMutations(["sendNFTtitle"]),
     ...mapMutations(["sendNFTcontent"]),
@@ -81,11 +85,42 @@ export default {
 
       //   this.$router.push({ name: "login" });
     },
+
+    whileread() {
+      axios
+        .get("http://localhost:5200/member/accounts")
+        .then((res) => {
+          this.userlist = res.data.posts;
+          console.log(res.data);
+        })
+        .catch((e) => {
+          console.error(e.message);
+        });
+    },
+
+    selectinfo(_id) {
+      let myid = _id;
+      console.log(myid);
+
+      axios
+        .post("http://localhost:5200/project/select", {
+          yourid: myid,
+        })
+        .then((res) => {
+          console.log(res.data);
+
+          this.addproject(res.data.posts);
+        });
+    },
+
+    move3() {
+      this.$router.push({ name: "projectdetail" });
+    },
   },
   computed: {
     ...mapState(["islogin"]),
 
-    ...mapState(["newtradingNFTs"]),
+    ...mapState(["project0"]),
 
     ...mapState(["tradeditem"]),
     ...mapState(["boughtinfo"]),

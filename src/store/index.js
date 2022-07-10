@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
 
-    project0: []
+    project0: null
 
 
 
@@ -18,7 +18,7 @@ export default new Vuex.Store({
 
     addproject(state, payload) {
 
-      state.project0.push(payload)
+      state.project0 = payload
 
 
     }
