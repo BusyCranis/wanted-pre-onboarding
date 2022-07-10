@@ -2,7 +2,6 @@
   <v-app>
     <v-app-bar
       app
-      
     >
     <router-link :to="{name: 'Home'}"> 홈으로 </router-link>
     

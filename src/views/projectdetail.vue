@@ -1,25 +1,11 @@
 <template>
   <div>
-
-<div v-for="item in $store.state.project0" :key="item._id">
-      <div  @click="updateinfo(item._id)"   >
-        {{ item }} 멤버 추가
-      </div>
+    <div v-for="item in $store.state.project0" :key="item._id">
+      <div @click="updateinfo(item._id)">{{ item }} 멤버 추가</div>
     </div>
 
-
-
-멤버 이름
-<input v-model="plan0"  >
-
-
-
-
-
-
-
-
-
+    멤버 이름
+    <input v-model="plan0" />
   </div>
 </template>
 <script>
@@ -31,8 +17,7 @@ export default {
     return {
       userlist: [],
 
-    plan0: null
-
+      plan0: null,
     };
   },
 
@@ -69,7 +54,7 @@ export default {
         });
     },
 
-updateinfo(_id) {
+    updateinfo(_id) {
       let myid = _id;
       console.log(myid);
 
@@ -82,8 +67,6 @@ updateinfo(_id) {
           console.log(res.data);
         });
     },
-
-
   },
   computed: {
     ...mapState(["islogin"]),

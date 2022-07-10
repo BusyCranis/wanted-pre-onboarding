@@ -16,15 +16,11 @@
       </div>
     </div>
 
- <div v-for="item in $store.state.project0" :key="item._id">
-      <div >
+    <div v-for="item in $store.state.project0" :key="item._id">
+      <div>
         {{ item }}
       </div>
     </div>
-
-
-
-
 
     <div @click="move3">프로젝트 상세 보러 가기</div>
   </div>
