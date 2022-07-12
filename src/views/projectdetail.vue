@@ -1,28 +1,43 @@
 <template>
   <div>
-    <div v-for="item in $store.state.project0" :key="item._id">
+    <!-- <div v-for="item in $store.state.project0" :key="item._id">
       <div>
-        {{ item.address }}
-        <div @click="updateinfo(item._id)">멤버 추가</div>
-        <div @click="addtask(item._id)">task 추가</div>
+        <p>프로젝트 이름: {{ item.email }}</p>
+        <p>프로젝트 종류: {{ item.password }}</p>
+        <v-btn @click="updateinfo(item._id)">멤버 추가</v-btn>
+        <v-btn @click="addtask(item._id)">task 추가</v-btn>
+      </div>
+    </div> -->
+
+    <p>프로젝트 이름: {{ $store.state.project0.email }}</p>
+    <p>프로젝트 종류: {{ $store.state.project0.password }}</p>
+
+    <v-btn @click="updateinfo">멤버 추가</v-btn>
+    <v-btn @click="addtask">task 추가</v-btn>
+
+    <p>멤버 이름 <input v-model="plan0" /></p>
+
+    <p>task 이름 <input v-model="task0" /></p>
+
+    이 프로젝트의 전체 멤버 목록
+    <div v-for="item in $store.state.project0.address" :key="item.id">
+      {{ item.firadd }}
+    </div>
+
+    <br />
+
+    이 프로젝트의 task 목록
+    <div v-for="item in $store.state.project0.task" :key="item.taskid">
+      <div>
+        {{ item.taskname }}
+        {{ item.member }}
+        <v-btn @click="taskmember(item.taskid)"> 참여하기 </v-btn>
+        <v-btn> 상세 멤버 보기 </v-btn>
       </div>
     </div>
 
-    멤버 이름
-    <input v-model="plan0" />
-
-    task 이름
-    <input v-model="task0" />
-
-    <div v-for="item in $store.state.project0[0].task" :key="item.taskid">
-      <div @click="taskmember(item.taskid)">
-        {{ item }}
-        참여하기
-      </div>
-    </div>
-
-    이름
-    <input v-model="taskone" />
+    <p> 참여할 사람 이름 <input v-model="taskone" /></p>
+    <p> 참여할 사람의 가격 <input v-model="price" /></p>
   </div>
 </template>
 <script>
@@ -36,6 +51,7 @@ export default {
       plan0: null,
       task0: null,
       taskone: null,
+      price: null
     };
   },
 
@@ -72,8 +88,8 @@ export default {
         });
     },
 
-    updateinfo(_id) {
-      let myid = _id;
+    updateinfo() {
+      let myid = this.$store.state.project0._id;
       console.log(myid);
 
       axios
@@ -86,8 +102,8 @@ export default {
         });
     },
 
-    addtask(_id) {
-      let myid = _id;
+    addtask() {
+      let myid = this.$store.state.project0._id;
       console.log(myid);
 
       axios
@@ -103,24 +119,22 @@ export default {
     taskmember(taskid) {
       let mytaskid = taskid;
 
-      let myrootid = this.$store.state.project0[0]._id
-
+      let myrootid = this.$store.state.project0._id;
 
       console.log(mytaskid);
 
-      console.log(myrootid)
+      console.log(myrootid);
 
       axios
-        .post("http://localhost:5200/task/member", {
+        .post("http://localhost:5200/push/task/member", {
           yourrootid: myrootid,
           yourtaskid: mytaskid,
           member: this.taskone,
+          price: this.price
         })
         .then((res) => {
           console.log(res.data);
         });
-
-
     },
   },
   computed: {

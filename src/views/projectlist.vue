@@ -11,23 +11,23 @@
     <v-btn @click="whileread"> 프로젝트 목록 보기 </v-btn>
 
     <div v-for="item in userlist" :key="item._id">
-      <div @click="selectinfo(item._id)">
-        {{ item.email }}
+      <div>
+        {{ item.email }},
         {{ item.password }}
+        <v-btn @click="selectinfo(item._id)"> 조회하기 </v-btn>
       </div>
     </div>
 
-    <div v-for="item in $store.state.project0" :key="item._id">
+    <!-- <div v-for="item in $store.state.project0" :key="item._id">
       <div>
         {{ item.email }}
         {{ item.password }}
       </div>
-    </div>
+    </div> -->
 
+    <!-- {{ $store.state.project0 }} -->
 
-
-
-    <div @click="move3">프로젝트 상세 보러 가기</div>
+    <v-btn @click="move3"> 프로젝트 조회 페이지로 이동 </v-btn>
   </div>
 </template>
 <script>
@@ -71,20 +71,10 @@ export default {
           email: this.email,
           password: this.password,
           name: Date.now(),
-          //   firaddress: this.form.firaddress,
-          //   secaddress: this.form.secaddress,
-          //   thraddress: this.form.thraddress,
         });
       } catch (err) {
         console.log(err);
       }
-
-      //   this.form.email = "";
-      //   this.form.password = "";
-      //   this.form.name = "";
-      //   this.form.passwordConfirm = "";
-
-      //   this.$router.push({ name: "login" });
     },
 
     whileread() {
@@ -108,9 +98,12 @@ export default {
           yourid: myid,
         })
         .then((res) => {
-          console.log(res.data);
+          //   console.log(res.data);
+          let realdata = res.data.posts[0];
 
-          this.addproject(res.data.posts);
+          console.log(realdata);
+
+          this.addproject(realdata);
         });
     },
 

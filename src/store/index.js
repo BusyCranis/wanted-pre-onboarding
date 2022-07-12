@@ -21,7 +21,7 @@ export default new Vuex.Store({
       state.project0 = payload
 
      
-      console.log(state.project0[0])
+      console.log(state.project0)
 
     }
 
