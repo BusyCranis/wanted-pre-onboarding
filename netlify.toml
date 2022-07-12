@@ -8,7 +8,7 @@
 [[redirects]]
  from = "/member/accounts"
  status = 200
- to = "http://49.247.26.149:5200//member/accounts"
+ to = "http://49.247.26.149:5200/member/accounts"
 
 
 
@@ -31,7 +31,7 @@
  status = 200
  to = "http://49.247.26.149:5200/update1/task"
 
- 
+
 
 [[redirects]]
  from = "/push/task/member"
