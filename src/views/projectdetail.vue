@@ -22,15 +22,16 @@
       <div>
         {{ item.taskname }}
         <v-btn @click="taskmember(item.taskid)"> 참여하기 </v-btn>
-        <v-btn @click="looktask(item.taskid)"> 이 task를 맡은 멤버 조회하기 </v-btn>
+        <v-btn @click="looktask(item.taskid)">
+          이 task를 맡은 멤버 조회하기
+        </v-btn>
       </div>
     </div>
 
     <p>참여할 사람 이름 <input v-model="taskone" /></p>
     <p>참여할 사람의 급여 <input v-model="price" /></p>
 
-
-이 task를 맡은 멤버 목록
+    이 task를 맡은 멤버 목록
     <div v-for="item in $store.state.currenttask" :key="item.innerid">
       {{ item.joinname }}, {{ item.price }}
     </div>
