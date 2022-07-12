@@ -1,14 +1,5 @@
 <template>
   <div>
-    <!-- <div v-for="item in $store.state.project0" :key="item._id">
-      <div>
-        <p>프로젝트 이름: {{ item.email }}</p>
-        <p>프로젝트 종류: {{ item.password }}</p>
-        <v-btn @click="updateinfo(item._id)">멤버 추가</v-btn>
-        <v-btn @click="addtask(item._id)">task 추가</v-btn>
-      </div>
-    </div> -->
-
     <p>프로젝트 이름: {{ $store.state.project0.email }}</p>
     <p>프로젝트 종류: {{ $store.state.project0.password }}</p>
 
@@ -36,8 +27,8 @@
       </div>
     </div>
 
-    <p> 참여할 사람 이름 <input v-model="taskone" /></p>
-    <p> 참여할 사람의 가격 <input v-model="price" /></p>
+    <p>참여할 사람 이름 <input v-model="taskone" /></p>
+    <p>참여할 사람의 가격 <input v-model="price" /></p>
   </div>
 </template>
 <script>
@@ -51,7 +42,7 @@ export default {
       plan0: null,
       task0: null,
       taskone: null,
-      price: null
+      price: null,
     };
   },
 
@@ -130,7 +121,7 @@ export default {
           yourrootid: myrootid,
           yourtaskid: mytaskid,
           member: this.taskone,
-          price: this.price
+          price: this.price,
         })
         .then((res) => {
           console.log(res.data);
