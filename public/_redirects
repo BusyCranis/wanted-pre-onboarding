@@ -1,0 +1,10 @@
+
+/signup/account* http://49.247.26.149:5200/signup/account 200
+
+/project/select* http://49.247.26.149:5200/project/select 200
+
+/update0/push* http://49.247.26.149:5200/update0/push 200
+
+/update1/taskt* http://49.247.26.149:5200/update1/task 200
+
+/push/task/member* http://49.247.26.149:5200/push/task/member 200
