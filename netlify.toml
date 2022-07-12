@@ -1,36 +1,39 @@
 [[redirects]]
-from = "/signup/account"
-status = 200
-to = "http://49.247.26.149:5200/signup/account"
+ from = "/signup/account"
+ status = 200
+ to = "http://49.247.26.149:5200/signup/account"
 
 
 
 [[redirects]]
-from = "/member/accounts"
-status = 200
-to = "http://49.247.26.149:5200//member/accounts"
+ from = "/member/accounts"
+ status = 200
+ to = "http://49.247.26.149:5200//member/accounts"
 
 
 
 [[redirects]]
-from = "/project/select"
-status = 200
-to = "http://49.247.26.149:5200/project/select"
+ from = "/project/select"
+ status = 200
+ to = "http://49.247.26.149:5200/project/select"
 
-
-[[redirects]]
-from = "/update0/push"
-status = 200
-to = "http://49.247.26.149:5200/update0/push"
 
 
 [[redirects]]
-from = "/update1/task"
-status = 200
-to = "http://49.247.26.149:5200/update1/task"
+ from = "/update0/push"
+ status = 200
+ to = "http://49.247.26.149:5200/update0/push"
+
 
 
 [[redirects]]
-from = "/push/task/member"
-status = 200
-to = "http://49.247.26.149:5200/push/task/member"
+ from = "/update1/task"
+ status = 200
+ to = "http://49.247.26.149:5200/update1/task"
+
+ 
+
+[[redirects]]
+ from = "/push/task/member"
+ status = 200
+ to = "http://49.247.26.149:5200/push/task/member"
