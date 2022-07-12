@@ -74,7 +74,7 @@ export default {
 
     whileread() {
       axios
-        .get("http://localhost:5200/member/accounts")
+        .get("/member/accounts")
         .then((res) => {
           this.userlist = res.data.posts;
           console.log(res.data);
@@ -89,7 +89,7 @@ export default {
       console.log(myid);
 
       axios
-        .post("http://localhost:5200/update0/push", {
+        .post("/update0/push", {
           yourid: myid,
           member: this.plan0,
         })
@@ -103,7 +103,7 @@ export default {
       console.log(myid);
 
       axios
-        .post("http://localhost:5200/update1/task", {
+        .post("/update1/task", {
           yourid: myid,
           task: this.task0,
         })
@@ -122,7 +122,7 @@ export default {
       console.log(myrootid);
 
       axios
-        .post("http://localhost:5200/push/task/member", {
+        .post("/push/task/member", {
           yourrootid: myrootid,
           yourtaskid: mytaskid,
           member: this.taskone,

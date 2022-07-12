@@ -67,7 +67,7 @@ export default {
 
     async onSubmit() {
       try {
-        await axios.post("http://localhost:5200/signup/account", {
+        await axios.post("/signup/account", {
           email: this.email,
           password: this.password,
           name: Date.now(),
@@ -79,7 +79,7 @@ export default {
 
     whileread() {
       axios
-        .get("http://localhost:5200/member/accounts")
+        .get("/member/accounts")
         .then((res) => {
           this.userlist = res.data.posts;
           console.log(res.data);
@@ -94,7 +94,7 @@ export default {
       console.log(myid);
 
       axios
-        .post("http://localhost:5200/project/select", {
+        .post("/project/select", {
           yourid: myid,
         })
         .then((res) => {
