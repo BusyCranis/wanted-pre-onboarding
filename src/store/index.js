@@ -6,7 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
 
-    project0: null
+    project0: null,
+
+    currenttask: null
 
 
 
@@ -17,13 +19,20 @@ export default new Vuex.Store({
   mutations: {
 
     addproject(state, payload) {
-
       state.project0 = payload
-
-     
       console.log(state.project0)
+    },
+
+
+    lookcurrent(state, payload) {
+
+      state.currenttask = payload.member
+
+      console.log(state.currenttask)
 
     }
+
+
 
 
 

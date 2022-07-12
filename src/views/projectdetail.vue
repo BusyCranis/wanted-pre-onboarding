@@ -21,14 +21,19 @@
     <div v-for="item in $store.state.project0.task" :key="item.taskid">
       <div>
         {{ item.taskname }}
-        {{ item.member }}
         <v-btn @click="taskmember(item.taskid)"> 참여하기 </v-btn>
-        <v-btn> 상세 멤버 보기 </v-btn>
+        <v-btn @click="looktask(item.taskid)"> 이 task를 맡은 멤버 조회하기 </v-btn>
       </div>
     </div>
 
     <p>참여할 사람 이름 <input v-model="taskone" /></p>
-    <p>참여할 사람의 가격 <input v-model="price" /></p>
+    <p>참여할 사람의 급여 <input v-model="price" /></p>
+
+
+이 task를 맡은 멤버 목록
+    <div v-for="item in $store.state.currenttask" :key="item.innerid">
+      {{ item.joinname }}, {{ item.price }}
+    </div>
   </div>
 </template>
 <script>
@@ -52,7 +57,7 @@ export default {
     ...mapMutations(["addproject"]),
     ...mapMutations(["sendNFT"]),
     ...mapMutations(["sendNFTtitle"]),
-    ...mapMutations(["sendNFTcontent"]),
+    ...mapMutations(["lookcurrent"]),
     ...mapMutations(["addItems"]),
     ...mapMutations(["sendNewItem"]),
     ...mapMutations(["sendNewItemtitle"]),
@@ -127,13 +132,23 @@ export default {
           console.log(res.data);
         });
     },
+
+    looktask(taskid) {
+      let taskdetail = this.$store.state.project0.task.filter(
+        (item) => item.taskid === taskid
+      )[0];
+
+      //   console.log(taskdetail)
+
+      this.lookcurrent(taskdetail);
+    },
   },
   computed: {
     ...mapState(["islogin"]),
 
     ...mapState(["project0"]),
 
-    ...mapState(["tradeditem"]),
+    ...mapState(["currenttask"]),
     ...mapState(["boughtinfo"]),
     ...mapState(["soldinfo"]),
     ...mapState(["vrcp"]),
