@@ -18,16 +18,8 @@
       </div>
     </div>
 
-    <!-- <div v-for="item in $store.state.project0" :key="item._id">
-      <div>
-        {{ item.email }}
-        {{ item.password }}
-      </div>
-    </div> -->
 
-    <!-- {{ $store.state.project0 }} -->
-
-    <v-btn @click="move3"> 프로젝트 조회 페이지로 이동 </v-btn>
+    <!-- <v-btn @click="move3"> 프로젝트 조회 페이지로 이동 </v-btn> -->
   </div>
 </template>
 <script>
@@ -107,9 +99,7 @@ export default {
 
           this.addproject(realdata);
 
-
-         this.$router.push({ name: "projectdetail" });
-
+          this.$router.push({ name: "projectdetail" });
         });
     },
 
