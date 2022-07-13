@@ -53,7 +53,7 @@ export default {
     ...mapMutations(["sendNFTcontent"]),
     ...mapMutations(["addItems"]),
     ...mapMutations(["sendNewItem"]),
-    ...mapMutations(["sendNewItemtitle"]),
+    ...mapMutations(["reset0"]),
     ...mapMutations(["deleteNFT1"]),
     ...mapMutations(["updateNFT1"]),
     ...mapMutations(["addshop"]),
@@ -87,6 +87,8 @@ export default {
         .catch((e) => {
           console.error(e.message);
         });
+
+      this.reset0();
     },
 
     selectinfo(_id) {

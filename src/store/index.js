@@ -30,6 +30,12 @@ export default new Vuex.Store({
 
       console.log(state.currenttask)
 
+    },
+
+    reset0(state) {
+
+      state.currenttask = null
+
     }
 
 
