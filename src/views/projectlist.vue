@@ -106,6 +106,10 @@ export default {
           console.log(realdata);
 
           this.addproject(realdata);
+
+
+         this.$router.push({ name: "projectdetail" });
+
         });
     },
 
